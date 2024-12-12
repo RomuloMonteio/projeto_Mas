@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myhealth’ub</title>
+    <style>
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b60000;
+            margin-left: 2px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 80px; /* Increased space between Visão Geral and the rest */
+        }
+        .dashboard h1 {
+            margin: 0;
+            margin-bottom: 40px; /* Increased space below the header */
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Increased gap between Pacientes em Atenção and Consultas hoje */
+            margin-bottom: 40px; /* Increased space below stats */
+        }
+        .stats p {
+            margin: 0;
+            font-size: 18px;
+        }
+        .fieldset-container {
+            display: flex;
+            justify-content: center;
+        }
+        fieldset {
+            background: #f2f2f2; /* Same color as the overall background */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .indicators {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .indicator {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .indicator p {
+            margin: 5px 0;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .status.attention {
+            color: red;
+        }
+        .status.normal {
+            color: green;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 40px;
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .doctor-info img {
+            width: 50px; /* Tamanho da foto do médico */
+            height: 50px;
+            border-radius: 50%; /* Faz a imagem ser redonda */
+            margin-right: 10px;
+        }
+
+        .doctor-info span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-button {
+            background-color: transparent; /* Remove o fundo do botão */
+            border: none;
+            color: black;
+            padding: 20px; /* Aumenta o tamanho do botão */
+            font-size: 24px; /* Aumenta o tamanho da fonte */
+            cursor: pointer;
+            position: relative;
+            transition: transform 1s ease;
+        }
+
+        .notification-button:hover {
+            color: darkred; /* Cor ao passar o mouse */
+        }
+
+        .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: yellow;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: black;
+        }
+
+        .hidden {
+            opacity: 0; /* Esconde elementos com transição */
+        }
+
+        .notification-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .notification-info {
+            display: none;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-info.visible {
+            display: flex;
+        }
+
+        .navbar-left {
+            position: absolute;
+            left: 20px; /* Ajuste conforme necessário */
+        }
+
+        .navbar-right {
+            margin-left: auto; /* Move the button to the right */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a class="active" href="painelMedico.html">Painel</a>
+                <a href="">Consultas</a>
+                <a href="#">Medico</a>
+                <a href="index.html">Sair</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="notification-info navbar-left" id="notification-info">
+            Notificações (<span id="notification-count">0</span>)
+        </div>
+        <div class="doctor-info" id="doctor-info">
+            <img src="imagens/Imagem WhatsApp 2024-12-11 às 10.53.34_7e0db0bb.jpg" alt="Foto do Médico ou paciente" id="doctor-client-photo">
+            <span id="doctor-name">nome do medico ou paciente</span>
+        </div>
+        <div class="navbar-right">
+            <button class="notification-button" id="notification-button">
+                🔔
+            </button>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <h1>Visão Geral</h1>
+        <div class="stats">
+            <p>Pacientes em Atenção: <span style="color: red; font-weight: bold;">3</span></p>
+            <p>Consultas hoje: <span style="font-weight: bold;">5</span></p>
+        </div>
+        <div class="fieldset-container">
+            <fieldset>
+                <legend>Indicadores de Pacientes Recentes</legend>
+                <div class="indicators">
+                    <div class="indicator">
+                        <p><strong>Joao Silva</strong></p>
+                        <p>Pressão: 140/90 mmHg</p>
+                        <p class="status attention">Atenção</p>
+                    </div>
+                    <div class="indicator">
+                        <p><strong>Mario Costa</strong></p>
+                        <p>Glicose: 110 mg/DL</p>
+                        <p class="status normal">Normal</p>
+                    </div>
+                    <div class="indicator">
+                        <p><strong>Pedro Santo</strong></p>
+                        <p>FC: 80 bpm</p>
+                        <p class="status normal">Normal</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <script>
+        const notificationButton = document.getElementById('notification-button');
+        const doctorInfo = document.getElementById('doctor-info'); // Corrected ID
+        const notificationInfo = document.getElementById('notification-info');
+
+        notificationButton.addEventListener('click', () => {
+            // Esconde a informação do médico
+            doctorInfo.classList.toggle('hidden');
+            // Mostra ou esconde a informação de notificações
+            notificationInfo.classList.toggle('visible');
+        });
+    </script>
+</body>
+</html>

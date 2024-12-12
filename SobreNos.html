@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - MyHealth'ub</title>
+    <style>
+        html, body {
+            height: 100%; /* Define a altura total da página */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif; /* Fonte igual ao exemplo */
+            background-color: #f0f0f0; /* Fundo cinza claro */
+        }
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px; /* Tamanho da fonte do título */
+            font-weight: bold;
+            color: #b60000;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .container {
+            flex: 1; /* Faz com que o container ocupe o espaço restante */
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .box {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 2px solid #b0b0b0; /* Borda cinza para as caixas */
+            flex: 1; /* Faz com que as boxes tenham o mesmo tamanho */
+            padding: 30px; /* Aumentado */
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .box h2 {
+            font-size: 1.8em; /* Tamanho da fonte do título da caixa */
+            margin-bottom: 15px; /* Aumentado */
+            color: #b60000;
+        }
+
+        .box p {
+            font-size: 1em; /* Tamanho da fonte do texto */
+            line-height: 1.6;
+            color: #555555;
+        }
+
+        .footer {
+            background-color: #666666;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .logo {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .footer .logo img {
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column; /* Muda para coluna em telas menores */
+            }
+            .box {
+                margin-bottom: 20px; /* Espaço entre as boxes em telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="SobreNos.html" class="active">Sobre nós</a>
+                <a href="#">Hospitais</a>
+                <a href="registar.html">Registar</a>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <h1 style="text-align: center ; color: #b60000; font-size: 2.5em;">Quem somos?</h1>
+        <div class="about-section">
+            <div class="box">
+                <h2>Missão</h2>
+                <p>O <strong>Myhealth’ub</strong> assume-se como um projeto global de saúde, integrando uma vasta rede de Unidades Hospitalares. O seu principal objetivo é melhorar a forma de cuidar dos seus clientes, proporcionando-lhes cuidados de proximidade. Na saúde a confiança é essencial, sendo exigidos elevados padrões de qualidade a nível técnico e humano.</p>
+            </div>
+            <div class="box">
+                <h2>Visão</h2>
+                <p>Os novos projetos do <strong>Myhealth’ub</strong> permitirão criar novos postos de trabalho diretos e indiretos, oferecer os nossos serviços a mais clientes e irmos mais longe na introdução de novas técnicas de diagnóstico e tratamento.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Contacto Geral</p>
+        <p>+351 927 316 451</p>
+        <p>geral@myhealthub.com</p>
+        <p>Rua exemplo 43, nº 2, Aveiro</p>
+        <div class="logo">MyHealth'ub</div>
+    </div>
+</body>
+</html>

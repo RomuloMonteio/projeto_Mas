@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar com Notificações</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b60000;
+            margin-left: 2px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 40px;
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .doctor-info img {
+            width: 50px; /* Tamanho da foto do médico */
+            height: 50px;
+            border-radius: 50%; /* Faz a imagem ser redonda */
+            margin-right: 10px;
+        }
+
+        .doctor-info span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-button {
+            background-color: transparent; /* Remove o fundo do botão */
+            border: none;
+            color: black;
+            padding: 20px; /* Aumenta o tamanho do botão */
+            font-size: 24px; /* Aumenta o tamanho da fonte */
+            cursor: pointer;
+            position: relative;
+            transition: transform 1s ease;
+        }
+
+        .notification-button:hover {
+            color: darkred; /* Cor ao passar o mouse */
+        }
+
+        .notification-info {
+            display: none;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-info.visible {
+            display: flex;
+        }
+
+        .navbar-left {
+            position: absolute;
+            left: 20px; /* Ajuste conforme necessário */
+        }
+
+        .navbar-right {
+            margin-left: auto; /* Move the button to the right */
+        }
+
+        .hidden {
+            opacity: 0; /* Esconde o elemento com transição de opacidade */
+            visibility: hidden; /* Esconde o elemento da visualização */
+            transition: opacity 0.5s ease, visibility 0.5s ease; /* Adiciona transição */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#" class="active">Sobre nós</a>
+                <a href="#">Hospitais</a>
+                <a href="#">Registar</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="notification-info navbar-left" id="notification-info">
+            Notificações (<span id="notification-count">0</span>)
+        </div>
+        <div class="doctor-info" id="doctor-info">
+            <img src="#imagem" alt="Foto do Médico ou paciente" id="doctor-client-photo">
+            <span id="doctor-name">nome do medico ou paciente</span>
+        </div>
+        <div class="navbar-right">
+            <button class="notification-button" id="notification-button">
+                🔔
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const notificationButton = document.getElementById('notification-button');
+        const doctorInfo = document.getElementById('doctor-info'); // Corrected ID
+        const notificationInfo = document.getElementById('notification-info');
+
+        notificationButton.addEventListener('click', () => {
+            // Esconde a informação do médico
+            doctorInfo.classList.toggle('hidden');
+            // Mostra ou esconde a informação de notificações
+            notificationInfo.classList.toggle('visible');
+        });
+    </script>
+
+</body>
+</html>

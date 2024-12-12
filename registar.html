@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHealth'ub - Registar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b60000;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            text-align: center;
+            color: #b60000;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #b60000;
+            outline: none;
+        }
+
+        .form-actions {
+            text-align: center;
+        }
+
+        .form-actions button {
+            background-color: #b60000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-actions button:hover {
+            background-color: #a00000;
+        }
+
+        .footer {
+            background-color: #666666;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .logo {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .footer .logo img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="SobreNos.html">Sobre nós</a>
+                <a href="#">Hospitais</a>
+                <a href="registar.html" class="active">Registar</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h1>Registar</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Criar senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Crie sua senha" minlength="6" required>
+            </div>
+
+            <div class="form-group">
+                <label for="utente">Número de Utente:</label>
+                <input type="text" id="utente" name="utente" placeholder="Digite o número de utente" pattern="\d{9}" title="Deve conter 9 dígitos" required>
+            </div>
+
+            <div class="form-group">
+                <label for="identificacao">Número de Identificação:</label>
+                <input type="text" id="identificacao" name="identificacao" placeholder="Digite o número de identificação" pattern="\d+" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nif">NIF:</label>
+                <input type="text" id="nif" name="nif" placeholder="Digite o NIF" pattern="\d{9}" title="Deve conter 9 dígitos" required>
+            </div>
+
+            <div class="form-group">
+                <label for="morada">Morada:</label>
+                <input type="text" id="morada" name="morada" placeholder="Digite sua morada" required>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo">Código Postal:</label>
+                <input type="text" id="codigo" name="codigo" placeholder="Digite o código postal" pattern="\d{4}-\d{3}" title="Formato: 1234-567" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Registar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Contacto Geral</p>
+        <p>+351 927 316 451</p>
+        <p>geral@myhealthub.com</p>
+        <p>Rua exemplo 43, nº 2, Aveiro</p>
+        <div class="logo">MyHealth'ub</div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+            const utente = document.getElementById('utente').value.trim();
+            const identificacao = document.getElementById('identificacao').value.trim();
+            const nif = document.getElementById('nif').value.trim();
+            const morada = document.getElementById('morada').value.trim();
+            const codigo = document.getElementById('codigo').value.trim();
+
+            if (!nome || !email || !senha || !utente || !identificacao || !nif || !morada || !codigo) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            alert('Formulário enviado com sucesso!');
+            this.submit();
+        });
+    </script>
+</body>
+</html>
