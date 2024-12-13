@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHealth'ub - Consultas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #a01313;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .footer {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+        .consulta-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div  class="header bg-white">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a href="paciente.html">Painel</a>
+                <a class="active" href="consultas.html">Consultas</a>
+                <a href="">Medico</a>
+                <a id="sair" href="index.html" >Sair</a>
+            </nav>
+        </div>
+    </div>
+    <div class="container mt-5">
+    
+        <h1>Minhas Consultas</h1>
+        <div class="mt-4" id="listaConsultas">
+            <div class="consulta-card">
+                <p><strong>Médico:</strong> Kendrick Lamar Lionel (Médico Geral)</p>
+                <p><strong>Tipo:</strong> Presencial</p>
+                <p><strong>Data:</strong> 5 Jan 2024 10:00</p>
+                <p><strong>Local:</strong> Hospital da Luz</p>
+                <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
+                <button class="btn btn-danger btn-cancel">Cancelar</button>
+            </div>
+
+            <div class="consulta-card">
+                <p><strong>Médico:</strong> João Silva</p>
+                <p><strong>Tipo:</strong> Presencial</p>
+                <p><strong>Data:</strong> 10 Jan 2024 15:00</p>
+                <p><strong>Local:</strong> Hospital da Luz</p>
+                <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
+                <button class="btn btn-danger btn-cancel">Cancelar</button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" id="novaConsulta">Nova Consulta</button>
+
+        <div class="footer mt-4">
+            <p>Contacto Geral:</p>
+            <p><i class="bi bi-telephone"></i> <a href="tel:+351927316451" class="text-white">+351 927 316 451</a></p>
+            <p><i class="bi bi-envelope"></i> <a href="mailto:geral@myhealthub.com" class="text-white">geral@myhealthub.com</a></p>
+            <p><i class="bi bi-geo-alt"></i> <a href="https://www.google.com/maps?q=Rua+exemplo+43,+n%C2%BA+2,+Aveiro" class="text-white" target="_blank">Rua exemplo 43, nº 2, Aveiro</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="consultaModal">
+        <div class="modal-content">
+            <h5>Agendar Nova Consulta</h5>
+            <label for="dataConsulta">Data Disponível:</label>
+            <select id="dataConsulta" class="form-select mb-3">
+                <option value="2024-01-15">15 Jan 2024</option>
+                <option value="2024-01-20">20 Jan 2024</option>
+                <option value="2024-01-25">25 Jan 2024</option>
+            </select>
+            <label for="horaConsulta">Hora:</label>
+            <input type="time" id="horaConsulta" class="form-control mb-3">
+            <button class="btn btn-success" id="agendarConsulta">Agendar</button>
+            <button class="btn btn-secondary" id="fecharModal">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        //dejesa mesmo cancelar
+        $('.btn-cancel').on('click',function(){
+            let resposta = confirm('Deseja mesmo cancelar?')
+
+            if (resposta){
+                alert("Voce Cancelou.")
+                const button = $(this);
+                button.text('Cancelado').prop('disabled', true).removeClass('btn-danger').addClass('btn-secondary');
+                
+            }else{
+                alert('Consulta nao cancelada')
+            }
+        })
+        $(document).ready(function () {
+            
+
+            // Cancelar consulta
+           
+
+            // Abrir modal de nova consulta
+            $('#novaConsulta').on('click', function () {
+                $('#consultaModal').fadeIn();
+            });
+
+            // Fechar modal
+            $('#fecharModal').on('click', function () {
+                $('#consultaModal').fadeOut();
+                
+            });
+
+            // Agendar consulta
+            $('#agendarConsulta').on('click', function () {
+                const data = $('#dataConsulta').val();
+                const hora = $('#horaConsulta').val();
+
+                if (!hora) {
+                    alert('Por favor, selecione um horário válido.');
+                    return;
+                }
+
+                const novaConsulta = `
+                    <div class="consulta-card">
+                        <p><strong>Médico:</strong> Novo Médico</p>
+                        <p><strong>Tipo:</strong> Presencial</p>
+                        <p><strong>Data:</strong> ${data} ${hora}</p>
+                        <p><strong>Local:</strong> Hospital da Luz</p>
+                        <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
+                        <button class="btn btn-danger btn-cancel">Cancelar</button>
+                    </div>
+                `;
+
+                $('#listaConsultas').append(novaConsulta);
+                $('#consultaModal').fadeOut();
+                alert('consulta agendada no dia '+ data + ' as ' + hora +'h')
+                // Rebind cancel button for new card
+                $('.btn-cancel').off('click').on('click', function () {
+                    const button = $(this);
+                    button.text('Cancelado').prop('disabled', true).removeClass('btn-danger').addClass('btn-secondary');
+                });
+            });
+        });
+    </script>
+    <script src="geral.js"></script>
+</body>
+</html>

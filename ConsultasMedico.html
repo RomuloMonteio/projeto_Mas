@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão Geral</title>
+    <style>
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b60000;
+            margin-left: 2px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 80px; /* Increased space between Visão Geral and the rest */
+        }
+        .dashboard h1 {
+            margin: 0;
+            margin-bottom: 40px; /* Increased space below the header */
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Increased gap between Pacientes em Atenção and Consultas hoje */
+            margin-bottom: 40px; /* Increased space below stats */
+        }
+        .stats p {
+            margin: 0;
+            font-size: 18px;
+        }
+        .fieldset-container {
+            display: flex;
+            justify-content: center;
+        }
+        fieldset {
+            background: #f2f2f2; /* Same color as the overall background */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .indicators {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .indicator {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .indicator p {
+            margin: 5px 0;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .status.attention {
+            color: red;
+        }
+        .status.normal {
+            color: green;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 40px;
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .doctor-info img {
+            width: 50px; /* Tamanho da foto do médico */
+            height: 50px;
+            border-radius: 50%; /* Faz a imagem ser redonda */
+            margin-right: 10px;
+        }
+
+        .doctor-info span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-button {
+            background-color: transparent; /* Remove o fundo do botão */
+            border: none;
+            color: black;
+            padding: 20px; /* Aumenta o tamanho do botão */
+            font-size: 24px; /* Aumenta o tamanho da fonte */
+            cursor: pointer;
+            position: relative;
+            transition: transform 1s ease;
+        }
+
+        .notification-button:hover {
+            color: darkred; /* Cor ao passar o mouse */
+        }
+
+        .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: yellow;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: black;
+        }
+
+        .hidden {
+            opacity: 0; /* Esconde elementos com transição */
+            display: none;
+        }
+
+        .notification-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .notification-info {
+            display: none;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .notification-info.visible {
+            display: flex;
+        }
+
+        .navbar-left {
+            position: absolute;
+            left: 20px; /* Ajuste conforme necessário */
+        }
+
+        .navbar-right {
+            margin-left: auto; /* Move the button to the right */
+        }
+
+
+        /*  Estilos para o botão de logout */
+        .logout-button {
+            background-color: transparent; /* Remove a cor de fundo padrão */
+            color: #b60000; /* Cor do texto */
+            border: none; /* Remove a borda */
+            padding: 10px 15px; /* Espaçamento interno */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+            transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+            font-family: inherit; /* Herda a fonte do elemento pai */
+            font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
+            font-weight: bold;
+            line-height: inherit; /* Herda a altura da linha do elemento pai */
+        }
+
+        .logout-button:hover {
+            background-color: darkred; /* Cor ao passar o mouse */
+            color: white; /* Muda a cor do texto ao passar o mouse */
+        }
+
+        /* vibes dos botoes de logout e assim */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slide-in 0.3s ease;
+        }
+
+        .modal-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .modal-button#confirm-logout {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .modal-button#confirm-logout:hover {
+            background-color: darkred;
+        }
+
+        .modal-button#cancel-logout {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .modal-button#cancel-logout:hover {
+            background-color: #bbb;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <span>MyHealth'ub</span>
+            <nav>
+                <a href="painelMedico.html" class="active">Painel</a>
+                <a href="#" >Consultas</a>
+                <a href="#">Pacientes</a>
+                <button id="logout-button" class="logout-button">Sair</button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="notification-info navbar-left" id="notification-info">
+            Notificações (<span id="notification-count">0</span>)
+        </div>
+        <div class="doctor-info" id="doctor-info">
+            <img src="#imagem" alt="Foto do Médico ou paciente" id="doctor-client-photo">
+            <span id="doctor-name">nome do medico ou paciente</span>
+        </div>
+        <div class="navbar-right">
+            <button class="notification-button" id="notification-button">
+                🔔
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Minhas Consultas</h2>
+        <div class="search-filter">
+            <input type="text" placeholder="Pesquisar...">
+            <select>
+                <option value="">Filtrar...</option>
+            </select>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora </th>
+                    <th>Paciente</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4/12/2024</td>
+                    <td>08:00</td>
+                    <td>João Silva</td>
+                    <td><a href="#" class="details">Detalhes</a></td>
+                </tr>
+                <tr>
+                    <td>4/12/2024</td>
+                    <td>12:00</td>
+                    <td>Maria José</td>
+                    <td><a href="#" class="details">Detalhes</a></td>
+                </tr>
+                <tr>
+                    <td>4/12/2024</td>
+                    <td>14:00</td>
+                    <td>João Cruz</td>
+                    <td><a href="#" class="details">Detalhes</a></td>
+                </tr>
+                <tr>
+                    <td>5/12/2024</td>
+                    <td>08:00</td>
+                    <td>Manuel Monteiro</td>
+                    <td><a href="#" class="details">Detalhes</a></td>
+                </tr>
+                <tr>
+                    <td>5/12/2024</td>
+                    <td>14:00</td>
+                    <td>José Cruz</td>
+                    <td><a href="#" class="details">Detalhes</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <p>Deseja realmente sair?</p>
+            <div class="modal-buttons">
+                <button id="confirm-logout" class="modal-button">Sim</button>
+                <button id="cancel-logout" class="modal-button">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const notificationButton = document.getElementById('notification-button');
+        const doctorInfo = document.getElementById('doctor-info'); // Corrected ID
+        const notificationInfo = document.getElementById('notification-info');
+
+        notificationButton.addEventListener('click', () => {
+            // Esconde a informação do médico
+            doctorInfo.classList.toggle('hidden');
+            // Mostra ou esconde a informação de notificações
+            notificationInfo.classList.toggle('visible');
+        });
+
+        // LOGOUT JS //
+        document.getElementById('logout-button').addEventListener('click', function() {
+            // Show the modal with fade-in effect
+            const modal = document.getElementById('logout-modal');
+            modal.classList.add('visible');
+        });
+
+        document.getElementById('confirm-logout').addEventListener('click', function() {
+            // Redirect to the logout page
+            window.location.href = 'index.html'; // Change to the URL of your logout page
+        });
+
+        document.getElementById('cancel-logout').addEventListener('click', function() {
+            // Hide the modal with fade-out effect
+            const modal = document.getElementById('logout-modal');
+            modal.classList.remove('visible');
+        });
+
+    </script>
+</body>
+</html>
