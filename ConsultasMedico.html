@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visão Geral</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
 
         .header {
             background-color: #ffffff;
@@ -27,7 +33,6 @@
             font-size: 24px;
             font-weight: bold;
             color: #b60000;
-            margin-left: 2px;
         }
 
         .header nav {
@@ -54,80 +59,80 @@
             color: white;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 20px;
-        }
-        .dashboard {
+        h2 {
             text-align: center;
-            margin-top: 20px;
-            margin-bottom: 80px; /* Increased space between Visão Geral and the rest */
-        }
-        .dashboard h1 {
-            margin: 0;
-            margin-bottom: 40px; /* Increased space below the header */
-        }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px; /* Increased gap between Pacientes em Atenção and Consultas hoje */
-            margin-bottom: 40px; /* Increased space below stats */
-        }
-        .stats p {
-            margin: 0;
-            font-size: 18px;
-        }
-        .fieldset-container {
-            display: flex;
-            justify-content: center;
-        }
-        fieldset {
-            background: #f2f2f2; /* Same color as the overall background */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 800px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        legend {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .indicators {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .indicator {
-            flex: 1;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .indicator p {
-            margin: 5px 0;
-        }
-        .status {
-            font-weight: bold;
-        }
-        .status.attention {
-            color: red;
-        }
-        .status.normal {
-            color: green;
+            margin: 40px 0 20px;
+            color: #333;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-filter input, 
+        .search-filter select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-filter input:focus, 
+        .search-filter select:focus {
+            border-color: #b60000;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: white;
+            margin: 20px auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background-color: #b60000;
+            color: white;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 15px;
+        }
+
+        tbody td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .details {
+            color: #b60000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .details:hover {
+            text-decoration: underline;
         }
 
         .navbar {
@@ -144,7 +149,7 @@
         .doctor-info {
             display: flex;
             align-items: center;
-            transition: opacity 1s ease;
+            transition: opacity 0.3s ease;
         }
 
         .doctor-info img {
@@ -164,7 +169,7 @@
             border: none;
             color: black;
             padding: 20px; /* Aumenta o tamanho do botão */
-            font-size: 24px; /* Aumenta o tamanho da fonte */
+            font-size : 24px; /* Aumenta o tamanho da fonte */
             cursor: pointer;
             position: relative;
             transition: transform 1s ease;
@@ -172,28 +177,6 @@
 
         .notification-button:hover {
             color: darkred; /* Cor ao passar o mouse */
-        }
-
-        .notification {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: yellow;
-            border-radius: 50%;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: black;
-        }
-
-        .hidden {
-            opacity: 0; /* Esconde elementos com transição */
-            display: none;
-        }
-
-        .notification-container {
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s ease;
         }
 
         .notification-info {
@@ -217,6 +200,11 @@
             margin-left: auto; /* Move the button to the right */
         }
 
+        .hidden {
+            opacity: 0; /* Esconde o elemento com transição de opacidade */
+            visibility: hidden; /* Esconde o elemento da visualização */
+            transition: opacity 0.5s ease, visibility 0.5s ease; /* Adiciona transição */
+        }
 
         /*  Estilos para o botão de logout */
         .logout-button {
@@ -327,10 +315,10 @@
         <div class="container">
             <span>MyHealth'ub</span>
             <nav>
-                <a href="painelMedico.html" class="active">Painel</a>
-                <a href="#" >Consultas</a>
+                <a href="painelMedico.html" >Painel</a>
+                <a href="ConsultasMedico.html" class="active">Consultas</a>
                 <a href="#">Pacientes</a>
-                <button id="logout-button" class="logout-button">Sair</button>
+                <button id="logout" class="logout-button">Sair</button>
             </nav>
         </div>
     </div>
@@ -340,8 +328,8 @@
             Notificações (<span id="notification-count">0</span>)
         </div>
         <div class="doctor-info" id="doctor-info">
-            <img src="#imagem" alt="Foto do Médico ou paciente" id="doctor-client-photo">
-            <span id="doctor-name">nome do medico ou paciente</span>
+            <img src="imagens/Imagem WhatsApp 2024-12-11 às 10.53.34_7e0db0bb.jpg" alt="Foto do Médico ou paciente" id="doctor-client-photo">
+            <span id="doctor-name">Kendrick Lamar</span>
         </div>
         <div class="navbar-right">
             <button class="notification-button" id="notification-button">
@@ -362,7 +350,7 @@
             <thead>
                 <tr>
                     <th>Data</th>
-                    <th>Hora </th>
+                    <th>Hora</th>
                     <th>Paciente</th>
                     <th></th>
                 </tr>
@@ -443,5 +431,6 @@
         });
 
     </script>
+
 </body>
 </html>

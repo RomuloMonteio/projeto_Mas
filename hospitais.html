@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>MyHealth'ub - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b60000;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .hero {
+            position: relative;
+            background: no-repeat center center/cover;
+            height: 600px;
+            color: white;
+            text-align: center;
+            
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+            color: black;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 10px 0 30px;
+        }
+
+        .hero button {
+            background-color: #f0f0f0;
+            color: black;
+            border: none;
+            
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #a00000;
+            color: white;
+        }
+        .footer {
+            background-color: #666666;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer .logo {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .footer .logo img {
+            vertical-align: middle;
+        }
+        .hospital {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .hospital img {
+            width: 50%;
+            object-fit: cover;
+            height: auto;
+        }
+        .hospital-details {
+            padding: 15px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+        }
+        .hospital-details h2 {
+            margin: 0 0 10px;
+            text-align: left;
+        }
+        .hospital-details p {
+            margin: 5px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+  <span>MyHealth'ub</span>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Sobre nós</a>
+    <a href="hospitais.html"class="active">Hospitais</a>
+    <a href="#">Registar</a>
+  </nav>
+  </div>
+</div>
+  <div class="hero container">
+    <h1>Hospitais</h1>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Alfena</button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Alfena.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 229 688 700</p>
+                  <p><strong>Email:</strong> geral@alfena.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Rua Manuel Bento Júnior 201, Alfena 4445-268 Alfena</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Amadora</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="hospital">
+              <img src="images/Amadora.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 212 471 000</p>
+                  <p><strong>Email:</strong> geral@amadora.healthhub.com</p>
+                  <p><strong>Morada:</strong> UBBO Shopping Resort - Avenida Cruzeiro Seixas, nºs 5 e 7, fração FU 2650-504 Amadora</p>
+                </div>
+              </div>
+            </div>                
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Gaia</button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Gaia.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 220 439 600</p>
+                  <p><strong>Email:</strong> geral@gaia.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Rua Fernão de Magalhães, nº 2, Fração E 4400-629 V. N. de Gaia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Maia</button>
+        </h2>
+          <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Maia.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 229 980 940</p>
+                  <p><strong>Email:</strong> geral@maia.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> R. Padre António Nº232, 4470-136 Maia, Portugal Maia 4470-136</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Ovar</button>
+        </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Ovar.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 256 114 400</p>
+                  <p><strong>Email:</strong> geral@ovar.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Centro Comercial VIDA Ovar - Avenida D. Manuel I, Loja 1.002 + 1.003 3880-109 Ovar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Loures</button>
+        </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Loures.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 211 580 000</p>
+                  <p><strong>Email:</strong> geral@loures.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Centro Comercial LoureShopping - Av. Descobertas, nº 90, loja nº A009 2670-457 Loures</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Guimarães</button>
+        </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Guimaraes.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 253 147 000</p>
+                  <p><strong>Email:</strong> geral@guimaraes.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Centro Comercial Espaço Guimarães - Rua 25 de Abril, nº 210 4835-400 Guimarães</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Famalicão</button>
+        </h2>
+          <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="hospital">
+              <img src="images/Famalicao.webp" alt="Hospital de Alfena">
+                <div class="hospital-details">
+                  <p><strong>Telefone:</strong> +351 252 301 060</p>
+                  <p><strong>Email:</strong> geral@famalicao.myhealthhub.com</p>
+                  <p><strong>Morada:</strong> Av. dos Descobrimentos nº73, 4760-011 Famalicão</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="footer">
+  <p>Contacto Geral</p>
+  <p>+351 927 316 451</p>
+  <p>geral@myhealthub.com</p>
+  <p>Rua exemplo 43, nº 2, Aveiro</p>
+  <div class="logo">MyHealth'ub</div>
+</div>
+</body>   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

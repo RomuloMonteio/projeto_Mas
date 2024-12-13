@@ -242,6 +242,24 @@
         display: none;
     }
     /*fim */
+    .modal-button#confirm-logout {
+            background-color: #b60000;
+            color: white;
+        }
+
+        .modal-button#confirm-logout:hover {
+            background-color: darkred;
+        }
+
+        .modal-button#cancel-logout {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .modal-button#cancel-logout:hover {
+            background-color: #bbb;
+        }
+
     </style>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -257,7 +275,7 @@
                 <a class="active" href="painelMedico.html">Painel</a>
                 <a href="">Consultas</a>
                 <a href="#">Medico</a>
-                <a href="index.html">Sair</a>
+                <button id="logout" class="logout-button">Sair</button>
             </nav>
         </div>
     </div>
@@ -356,6 +374,24 @@
             doctorInfo.classList.toggle('hidden');
             // Mostra ou esconde a informação de notificações
             notificationInfo.classList.toggle('visible');
+        });
+
+         // LOGOUT JS //
+         document.getElementById('logout-button').addEventListener('click', function() {
+            // Show the modal with fade-in effect
+            const modal = document.getElementById('logout-modal');
+            modal.classList.add('visible');
+        });
+
+        document.getElementById('confirm-logout').addEventListener('click', function() {
+            // Redirect to the logout page
+            window.location.href = 'index.html'; // Change to the URL of your logout page
+        });
+
+        document.getElementById('cancel-logout').addEventListener('click', function() {
+            // Hide the modal with fade-out effect
+            const modal = document.getElementById('logout-modal');
+            modal.classList.remove('visible');
         });
     </script>
 </body>
