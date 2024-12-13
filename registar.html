@@ -135,6 +135,20 @@
         .footer .logo img {
             vertical-align: middle;
         }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            text-decoration: none;
+            color: #b60000;
+            font-weight: bold;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -194,7 +208,10 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit">Registar</button>
+                <a href="login.html"><button type="">Registar</button></a>
+            </div>
+            <div class="form-footer">
+                <p>Ja uma conta? <a href="login.html">Registe aqui</a></p>
             </div>
         </form>
     </div>
@@ -209,8 +226,6 @@
 
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
             const senha = document.getElementById('senha').value.trim();
@@ -224,9 +239,10 @@
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
-
+            window.location.href = 'login.html';
             alert('Formulário enviado com sucesso!');
-            this.submit();
+            
+            
         });
     </script>
 </body>
