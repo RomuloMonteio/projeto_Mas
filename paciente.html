@@ -124,11 +124,24 @@
             <nav>
                 <a class="active" href="paciente.html">Painel</a>
                 <a href="consultas.html">Consultas</a>
-                <a href="">Medico</a>
-                <a id="sair" href="index.html" >Sair</a>
+                <a href="painelMedico.html">Medico</a>
+                <button id="logout-button" class="logout-button">Sair</button>
+        
             </nav>
+            </div>
         </div>
-    </div>
+        <link rel="stylesheet" href="style_concelar.css">
+        <div style="width: 100%;" id="logout-modal" class="modal">
+            <div class="modal-content" style="width: 350px;">
+                <p>Deseja realmente sair?</p>
+                <div class="modal-buttons">
+                    <button id="confirm-logout" class="modal-button">Sim</button>
+                    <button id="cancel-logout" class="modal-button">Não</button>
+                </div>
+            </div>
+        </div>
+        <script src="sjs_cancelar.js"></script>
+        <div class="container">
     <div class="container mt-5">
         
         <div class="panel">

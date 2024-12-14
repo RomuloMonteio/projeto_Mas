@@ -255,12 +255,25 @@
             <span>MyHealth'ub</span>
             <nav>
                 <a class="active" href="painelMedico.html">Painel</a>
-                <a href="">Consultas</a>
-                <a href="#">Medico</a>
-                <a href="index.html">Sair</a>
+                <a href="ConsultasMedico.html">Consultas</a>
+                <a href="medico_pacientes.html">Paciente</a>
+                <button id="logout-button" class="logout-button">Sair</button>
+        
             </nav>
+            </div>
         </div>
-    </div>
+        <link rel="stylesheet" href="style_concelar.css">
+        <div style="width: 100%;" id="logout-modal" class="modal">
+            <div class="modal-content" style="width: 350px;">
+                <p>Deseja realmente sair?</p>
+                <div class="modal-buttons">
+                    <button id="confirm-logout" class="modal-button">Sim</button>
+                    <button id="cancel-logout" class="modal-button">Não</button>
+                </div>
+            </div>
+        </div>
+        <script src="sjs_cancelar.js"></script>
+        <div class="container">
 
     <div class="navbar">
         <div class="notification-info navbar-left" id="notification-info">
@@ -268,7 +281,7 @@
         </div>
         <div class="doctor-info" id="doctor-info">
             <img src="imagens/Imagem WhatsApp 2024-12-11 às 10.53.34_7e0db0bb.jpg" alt="Foto do Médico ou paciente" id="doctor-client-photo">
-            <span id="doctor-name">nome do medico ou paciente</span>
+            <span id="doctor-name">Kendrick lamar</span>
         </div>
         <div class="navbar-right">
             <button class="notification-button" id="notification-button">
