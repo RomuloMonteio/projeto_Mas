@@ -35,7 +35,7 @@
             background-color: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .modal {
+        .mo {
             display: none;
             position: fixed;
             z-index: 1050;
@@ -46,7 +46,7 @@
             overflow: hidden;
             background-color: rgba(0, 0, 0, 0.5);
         }
-        .modal-content {
+        .mo-content {
             background-color: white;
             margin: 15% auto;
             padding: 20px;
@@ -68,19 +68,22 @@
                 <a class="active" href="consultas.html">Consultas</a>
                 <a href="paciente_medico.html">Medico</a>
                 <button id="logout-button" class="logout-button">Sair</button>
+        
             </nav>
-        </div>
-    </div>
-
-    <div style="width: 100%;" id="logout-modal" class="modal">
-        <div class="modal-content" style="width: 350px;">
-            <p>Deseja realmente sair?</p>
-            <div class="modal-buttons">
-                <button id="confirm-logout" class="modal-button">Sim</button>
-                <button id="cancel-logout" class="modal-button">Não</button>
             </div>
         </div>
-    </div>
+        <link rel="stylesheet" href="style_concelar.css">
+        <div style="width: 100%;" id="logout-modal" class="modal">
+            <div class="modal-content" style="width: 350px;">
+                <p>Deseja realmente sair?</p>
+                <div class="modal-buttons">
+                    <button id="confirm-logout" class="modal-button">Sim</button>
+                    <button id="cancel-logout" class="modal-button">Não</button>
+                </div>
+            </div>
+        </div>
+        <script src="sjs_cancelar.js"></script>
+        <div class="container">
 
     <div class="container mt-5">
     
@@ -115,8 +118,8 @@
         </div>
     </div>
 
-    <div class="modal" id="consultaModal">
-        <div class="modal-content">
+    <div class="mo" id="consultamo">
+        <div class="mo-content">
             <h5>Agendar Nova Consulta</h5>
             <label for="dataConsulta">Data Disponível:</label>
             <select id="dataConsulta" class="form-select mb-3">
@@ -127,7 +130,7 @@
             <label for="horaConsulta">Hora:</label>
             <input type="time" id="horaConsulta" class="form-control mb-3">
             <button class="btn btn-success" id="agendarConsulta">Agendar</button>
-            <button class="btn btn-secondary" id="fecharModal">Cancelar</button>
+            <button class="btn btn-secondary" id="fecharmo">Cancelar</button>
         </div>
     </div>
 
@@ -149,16 +152,15 @@
             
 
             // Cancelar consulta
-           
 
-            // Abrir modal de nova consulta
+            // Abrir mo de nova consulta
             $('#novaConsulta').on('click', function () {
-                $('#consultaModal').fadeIn();
+                $('#consultamo').fadeIn();
             });
 
-            // Fechar modal
-            $('#fecharModal').on('click', function () {
-                $('#consultaModal').fadeOut();
+            // Fechar mo
+            $('#fecharmo').on('click', function () {
+                $('#consultamo').fadeOut();
                 
             });
 
@@ -184,7 +186,7 @@
                 `;
 
                 $('#listaConsultas').append(novaConsulta);
-                $('#consultaModal').fadeOut();
+                $('#consultamo').fadeOut();
                 alert('consulta agendada no dia '+ data + ' as ' + hora +'h')
                 // Rebind cancel button for new card
                 $('.btn-cancel').off('click').on('click', function () {
