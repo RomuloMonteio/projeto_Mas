@@ -1,0 +1,100 @@
+/*  Estilos para o botão de logout */
+.logout-button {
+    background-color: transparent; /* Remove a cor de fundo padrão */
+    color: #b60000; /* Cor do texto */
+    border: none; /* Remove a borda */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+    font-family: inherit; /* Herda a fonte do elemento pai */
+    font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
+    font-weight: bold;
+    line-height: inherit; /* Herda a altura da linha do elemento pai */
+}
+
+.logout-button:hover {
+    background-color: darkred; /* Cor ao passar o mouse */
+    color: white; /* Muda a cor do texto ao passar o mouse */
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: slide-in 0.3s ease;
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-button#confirm-logout {
+    background-color: #b60000;
+    color: white;
+}
+
+.modal-button#confirm-logout:hover {
+    background-color: darkred;
+}
+
+.modal-button#cancel-logout {
+    background-color: #ddd;
+    color: black;
+}
+
+.modal-button#cancel-logout:hover {
+    background-color: #bbb;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+

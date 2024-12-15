@@ -198,46 +198,145 @@
             object-fit: cover;
             height: 100px;
         }
+        .modal {
+            display: none; /* Oculto por padrão */
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: brown;
+            text-align: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin: 10px 0 10px 0;
+            color: black !important;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .modal-content p {
+            margin: 5px 0;
+        }
+
+        .modal-content .section-title {
+            color: brown;
+            font-weight: bold;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+        .modal-textarea {
+            width: 100%;
+            height: 120px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: left;
+        }
+
+        .modal-footer button {
+            background-color: brown;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-footer button:hover {
+            background-color: #a83232;
+        }
     </style>
 </head>
 <body>
-
-
 <div class="header">
     <div class="container">
     <span>MyHealth'ub</span>
     <nav>
         <a href="painelMedico.html">Painel</a>
         <a href="ConsultasMedico.html">Consultas</a>
-        <a href="medico_pacientes.html"class="active">Pacientes</a>
-        <button id="logout-button" class="logout-button">Sair</button>
-        
+        <a href="hospitais.html"class="active">Pacientes</a>
+        <a href="#">Registar</a>
     </nav>
     </div>
 </div>
-<link rel="stylesheet" href="style_concelar.css">
-<div style="width: 100%;" id="logout-modal" class="modal">
-    <div class="modal-content" style="width: 350px;">
-        <p>Deseja realmente sair?</p>
-        <div class="modal-buttons">
-            <button id="confirm-logout" class="modal-button">Sim</button>
-            <button id="cancel-logout" class="modal-button">Não</button>
-        </div>
-    </div>
-</div>
-<script src="sjs_cancelar.js"></script>
 <div class="container"> 
 <h1>Pacientes</h1>
     <div class="col-12 cards">
         <div class="card">
-        <img src="https://via.placeholder.com/100" alt="Paciente">
+            <img src="https://via.placeholder.com/100" alt="Paciente">
             
-                <h2>Michele Morrone</h2>
-                <p><span>36 Anos</span></p>
-                <p>Última Consulta: 17/5/2021</p>
-                <p>Status: <span class="active">Ativo</span></p>
-                <button>Ver Perfil</button>
-                <button>Enviar Mensagem</button>
+            <h2>Michele Morrone</h2>
+            <p><span>36 Anos</span></p>
+            <p>Última Consulta: 17/5/2021</p>
+            <p>Status: <span class="active">Ativo</span></p>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
             
         </div>
         <div class="card">
@@ -246,8 +345,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Paciente">
@@ -255,8 +379,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Paciente">
@@ -264,8 +413,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     
         <div class="card">
@@ -274,8 +448,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Paciente">
@@ -283,8 +482,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Paciente">
@@ -292,8 +516,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Paciente">
@@ -301,8 +550,33 @@
             <p><span>36 Anos</span></p>
             <p>Última Consulta: 17/5/2021</p>
             <p>Status: <span class="active">Ativo</span></p>
-            <button>Ver Perfil</button>
-            <button>Enviar Mensagem</button>
+            <button class="button" onclick="openModal()">Ver Perfil</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p><span class="section-title">T. Saguino:</span> O+</p>
+                    <p><span class="section-title">Contato:</span> (+351) 984 454 645</p>
+                    <p><span class="section-title">Endereço:</span> Rua das flores, 13</p>
+        
+                    <h2>Histórico Médico</h2>
+                    <p><span class="section-title">Doenças Crônicas:</span> Hipertensão, Diabetes Tipo 2</p>
+                    <p><span class="section-title">Alergia:</span> Penicilina</p>
+                    <p><span class="section-title">Medicamentos em Uso:</span> Losartana, Metformina</p>
+                </div>
+            </div>
+            <button class="button" onclick="openModalMessage()">Enviar Mensagem</button>
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalMessage()">&times;</span>
+                    <div class="modal-header">My Health'ub</div>
+                    <p style="text-align: left;">Envia a sua mensagem</p>
+                    <textarea class="modal-textarea" placeholder="Escreva a sua mensagem aqui..."></textarea>
+                    <div class="modal-footer">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -316,5 +590,52 @@
 </div>
 </body>   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Função para abrir o modal
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+    }
 
+    // Função para fechar o modal
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Fecha o modal se clicar fora do conteúdo
+    window.onclick = function(event) {
+        const modal = document.getElementById('myModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+<script>
+function openModalMessage() {
+    document.getElementById('messageModal').style.display = 'block';
+}
+
+// Função para fechar o modal
+function closeModalMessage() {
+    document.getElementById('messageModal').style.display = 'none';
+}
+
+// Fechar o modal clicando fora do conteúdo
+window.onclick = function(event) {
+    const modal = document.getElementById('messageModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Função para enviar a mensagem
+function sendMessage() {
+    const mensagem = document.querySelector('.modal-textarea').value;
+    if (mensagem.trim() !== "") {
+        alert("Mensagem enviada com sucesso: " + mensagem);
+        closeModal();
+    } else {
+        alert("Por favor, escreva uma mensagem antes de enviar.");
+    }
+}
+</script>
 </html>
