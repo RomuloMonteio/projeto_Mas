@@ -21,7 +21,7 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-        .moda {
+        .modal-content {
             padding: 20px;
         }
         .star {
@@ -43,13 +43,13 @@
                 <a href="paciente.html">Painel</a>
                 <a  href="consultas.html">Consultas</a>
                 <a class="active" href="paciente_medico.html">Medico</a>
-                <button id="logout-button" class="logout-button">Sair</button>
+                <a href="index.html">Sair</a>
         
             </nav>
             </div>
         </div>
         <link rel="stylesheet" href="paciente_medico.css">
-        <div style="width: 100%;" id="logout-modal" class="modal">
+        <div style="width: 100%;" id="logout-modal"  class="modal" >
             <div class="modal-content" style="width: 350px;">
                 <p>Deseja realmente sair?</p>
                 <div class="modal-buttons">
@@ -86,7 +86,7 @@
 <!-- Modal de Avaliação -->
 <div id="evaluateModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Avaliar o Médico</h5>
                 <button type="button" class="close" onclick="closeModal('evaluateModal')">&times;</button>
