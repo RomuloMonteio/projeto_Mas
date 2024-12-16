@@ -164,37 +164,49 @@
                 
             });
 
-            // Agendar consulta
             $('#agendarConsulta').on('click', function () {
-                const data = $('#dataConsulta').val();
-                const hora = $('#horaConsulta').val();
+    const data = $('#dataConsulta').val();
+    const hora = $('#horaConsulta').val();
 
-                if (!hora) {
-                    alert('Por favor, selecione um horário válido.');
-                    return;
-                }
+    if (!hora) {
+        alert('Por favor, selecione um horário válido.');
+        return;
+    }
 
-                const novaConsulta = `
-                    <div class="consulta-card">
-                        <p><strong>Médico:</strong> Novo Médico</p>
-                        <p><strong>Tipo:</strong> Presencial</p>
-                        <p><strong>Data:</strong> ${data} ${hora}</p>
-                        <p><strong>Local:</strong> Hospital da Luz</p>
-                        <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
-                        <button class="btn btn-danger btn-cancel">Cancelar</button>
-                    </div>
-                `;
+    // Criando o objeto da consulta
+    const novaConsulta = {
+        nome:'Michele Morrone',
+        medico: 'Dr Kendrick lamar', // Pode ser alterado para coletar dinamicamente
+        tipo: 'Presencial',    // Pode ser alterado para coletar dinamicamente
+        data: data,
+        hora: hora,
+        local: 'Hospital da Luz',
+        status: 'Confirmada'
+    };
 
-                $('#listaConsultas').append(novaConsulta);
-                $('#consultamo').fadeOut();
-                alert('consulta agendada no dia '+ data + ' as ' + hora +'h')
-                // Rebind cancel button for new card
-                $('.btn-cancel').off('click').on('click', function () {
-                    const button = $(this);
-                    button.text('Cancelado').prop('disabled', true).removeClass('btn-danger').addClass('btn-secondary');
-                });
+    // Salvando no localStorage
+    let consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+    consultas.push(novaConsulta);
+    localStorage.setItem('consultas', JSON.stringify(consultas));
+
+    // Exibindo a consulta agendada no painel do cliente
+    const consultaHTML = `
+        <div class="consulta-card">
+            <p><strong>Médico:</strong> ${novaConsulta.medico}</p>
+            <p><strong>Tipo:</strong> ${novaConsulta.tipo}</p>
+            <p><strong>Data:</strong> ${novaConsulta.data} ${novaConsulta.hora}</p>
+            <p><strong>Local:</strong> ${novaConsulta.local}</p>
+            <p><strong>Status:</strong> <span class="text-success">${novaConsulta.status}</span></p>
+            <button class="btn btn-danger btn-cancel">Cancelar</button>
+        </div>
+    `;
+
+    $('#listaConsultas').append(consultaHTML);
+    $('#consultamo').fadeOut();
+    alert('Consulta agendada para ' + novaConsulta.data + ' às ' + novaConsulta.hora + 'h');
+});
+
             });
-        });
     </script>
     
     <script src="geral.js"></script>

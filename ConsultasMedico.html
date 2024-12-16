@@ -74,110 +74,130 @@
         </div>
 
         <!-- Tabela de Consultas -->
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-header">
-                    <th>Data</th>
-                    <th>Hora</th>
-                    <th>Paciente</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4/12/2024</td>
-                    <td>08:00</td>
-                    <td>João Silva</td>
-                    <td>
-                        <a href="#" class="details-link" onclick="viewDetails('João Silva', '4/12/2024', '08:00')">Detalhes</a>
-                        <button class="btn btn-cancelar btn-sm ms-2" onclick="cancelAppointment(this, 'João Silva')">Cancelar</button>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>4/12/2024</td>
-                    <td>12:00</td>
-                    <td>Maria Jose</td>
-                    <td>
-                        <a href="#" class="details-link" onclick="viewDetails('Maria Jose', '4/12/2024', '12:00')">Detalhes</a>
-                        <button class="btn btn-cancelar btn-sm ms-2" onclick="cancelAppointment(this, 'Maria Jose')">Cancelar</button>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>5/12/2024</td>
-                    <td>14:00</td>
-                    <td>João Cruz</td>
-                    <td>
-                        <a href="#" class="details-link" onclick="viewDetails('João Cruz', '5/12/2024', '14:00')">Detalhes</a>
-                        <button class="btn btn-cancelar btn-sm ms-2" onclick="cancelAppointment(this, 'João Cruz')">Cancelar</button>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>5/12/2024</td>
-                    <td>14:00</td>
-                    <td>João Cruz</td>
-                    <td>
-                        <a href="#" class="details-link" onclick="viewDetails('Miguel Monteiro', '6/12/2024', '14:00')">Detalhes</a>
-                        <button class="btn btn-cancelar btn-sm ms-2" onclick="cancelAppointment(this, 'Miguel Monteiro')">Cancelar</button>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>5/12/2024</td>
-                    <td>14:00</td>
-                    <td>João Cruz</td>
-                    <td>
-                        <a href="#" class="details-link" onclick="viewDetails('Michele Morrone', '6/12/2024', '15:00')">Detalhes</a>
-                        <button class="btn btn-cancelar btn-sm ms-2" onclick="cancelAppointment(this, 'Michele Morrone')">Cancelar</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Modal de Detalhes -->
-    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailsModalLabel">Detalhes da Consulta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Paciente:</strong> <span id="patientName"></span></p>
-                    <p><strong>Data:</strong> <span id="appointmentDate"></span></p>
-                    <p><strong>Hora:</strong> <span id="appointmentTime"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <div class="container my-5">
+            <h1 class="mb-4">Consultas Médicas</h1>
+            <table class="table table-bordered" id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Paciente</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-id="1">
+                        <td>1</td>
+                        <td>João Silva</td>
+                        <td>2024-12-18</td>
+                        <td>14:00</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="viewDetails('João Silva', '2024-12-18', '14:00')">Ver Detalhes</button>
+                            <button class="btn btn-danger btn-sm" onclick="cancelAppointment(this, 1)">Cancelar</button>
+                        </td>
+                    </tr>
+                    <tr data-id="2">
+                        <td>2</td>
+                        <td>Maria Oliveira</td>
+                        <td>2024-12-19</td>
+                        <td>10:00</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="viewDetails('Maria Oliveira', '2024-12-19', '10:00')">Ver Detalhes</button>
+                            <button class="btn btn-danger btn-sm" onclick="cancelAppointment(this, 2)">Cancelar</button>
+                        </td>
+                    </tr>
+                    <tr data-id="2">
+                        <td>2</td>
+                        <td>joao cruz</td>
+                        <td>2024-12-19</td>
+                        <td>10:00</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="viewDetails('Maria Oliveira', '2024-12-19', '10:00')">Ver Detalhes</button>
+                            <button class="btn btn-danger btn-sm" onclick="cancelAppointment(this, 2)">Cancelar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Modal para detalhes -->
+        <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailsModalLabel">Detalhes da Consulta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Paciente:</strong> <span id="patientName"></span></p>
+                        <p><strong>Data:</strong> <span id="appointmentDate"></span></p>
+                        <p><strong>Hora:</strong> <span id="appointmentTime"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Script -->
-    <script>
-         function viewDetails(name, date, time) {
-            document.getElementById('patientName').textContent = name;
-            document.getElementById('appointmentDate').textContent = date;
-            document.getElementById('appointmentTime').textContent = time;
-            const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
-            detailsModal.show();
-        }
-
-        function cancelAppointment(button, name) {
-            if (confirm(`Tem certeza que deseja cancelar a consulta com ${name}?`)) {
-                
-                const row = button.closest('tr');
-                row.remove();
-                alert(`Consulta com ${name} foi cancelada com sucesso.`);
+    <script src="_local.js"></script>
+        <script>
+            // Carregar consultas canceladas do Local Storage
+            
+          
+            function viewDetails(name, date, time) {
+                document.getElementById('patientName').textContent = name;
+                document.getElementById('appointmentDate').textContent = date;
+                document.getElementById('appointmentTime').textContent = time;
+                const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+                detailsModal.show();
             }
-        }
-    </script>
-    <script>
+    
+            document.addEventListener("DOMContentLoaded", () => {
+    let consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+    consultas.forEach((consulta, index) => {
+        const consultaRow = `
+            <tr data-id="${index + 1}">
+                <td>${index + 1}</td>
+                <td>${consulta.nome}</td> 
+                <td>${consulta.data}</td>
+                <td>${consulta.hora}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="viewDetails('${consulta.medico}', '${consulta.data}', '${consulta.hora}')">Ver Detalhes</button>
+                    <button class="btn btn-danger btn-sm" onclick="cancelAppointment(this, ${index + 1})">Cancelar</button>
+                </td>
+            </tr>
+        `;
+        const tableBody = document.querySelector("#appointmentsTable tbody");
+        tableBody.innerHTML += consultaRow;
+    });
+});
+
+function cancelAppointment(button, id) {
+    if (confirm('Tem certeza que deseja cancelar esta consulta?')) {
+        let consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+        // Remover a consulta cancelada
+        consultas.splice(id - 1, 1); // id - 1 para ajustar o índice (o id começa em 1, mas o índice do array começa em 0)
+        localStorage.setItem('consultas', JSON.stringify(consultas));
+        
+        // Remover a linha visualmente
+        const row = button.closest('tr');
+        row.remove();
+        alert('Consulta cancelada com sucesso.');
+    }
+}
+
+    
+            function hideCanceledAppointments() {
+                const rows = document.querySelectorAll("#appointmentsTable tbody tr");
+                rows.forEach(row => {
+                    const appointmentId = parseInt(row.getAttribute("data-id"));
+                    if (canceledAppointments.includes(appointmentId)) {
+                        row.remove();
+                    }
+                });
+            }
+        </script>
        
     
         
