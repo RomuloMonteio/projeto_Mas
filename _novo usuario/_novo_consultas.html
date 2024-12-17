@@ -55,8 +55,8 @@
             border-radius: 10px;
         }
     </style>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_concelar.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style_concelar.css">
 
 </head>
 <body>
@@ -64,9 +64,9 @@
         <div class="container">
             <span>MyHealth'ub</span>
             <nav>
-                <a href="paciente.html">Painel</a>
-                <a class="active" href="consultas.html">Consultas</a>
-                <a href="paciente_medico.html">Medico</a>
+                <a href="_novo_paciente.html">Painel</a>
+                <a class="active" href="_novo_consultas.html">Consultas</a>
+                <a href="_novo_paciente_medico.html">Medico</a>
                 <button id="logout-button" class="logout-button">Sair</button>
         
             </nav>
@@ -82,40 +82,24 @@
                 </div>
             </div>
         </div>
-        <script src="sjs_cancelar.js"></script>
+        <script src="_novo_sjs_cancelar.js"></script>
         <div class="container">
 
-    <div class="container mt-5">
+    <div style="min-height: 100vh;" class="container mt-5">
     
         <h1>Minhas Consultas</h1>
         <div class="mt-4" id="listaConsultas">
-            <div class="consulta-card">
-                <p><strong>Médico:</strong> Kendrick Lamar Lionel (Médico Geral)</p>
-                <p><strong>Tipo:</strong> Presencial</p>
-                <p><strong>Data:</strong> 5 Jan 2024 10:00</p>
-                <p><strong>Local:</strong> Hospital da Luz</p>
-                <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
-                <button class="btn btn-danger btn-cancel">Cancelar</button>
-            </div>
-
-            <div class="consulta-card">
-                <p><strong>Médico:</strong> João Silva</p>
-                <p><strong>Tipo:</strong> Presencial</p>
-                <p><strong>Data:</strong> 10 Jan 2024 15:00</p>
-                <p><strong>Local:</strong> Hospital da Luz</p>
-                <p><strong>Status:</strong> <span class="text-success">Confirmada</span></p>
-                <button class="btn btn-danger btn-cancel">Cancelar</button>
-            </div>
         </div>
 
         <button class="btn btn-primary" id="novaConsulta">Nova Consulta</button>
 
-        <div class="footer mt-4">
-            <p>Contacto Geral:</p>
-            <p><i class="bi bi-telephone"></i> <a href="tel:+351927316451" class="text-white">+351 927 316 451</a></p>
-            <p><i class="bi bi-envelope"></i> <a href="mailto:geral@myhealthub.com" class="text-white">geral@myhealthub.com</a></p>
-            <p><i class="bi bi-geo-alt"></i> <a href="https://www.google.com/maps?q=Rua+exemplo+43,+n%C2%BA+2,+Aveiro" class="text-white" target="_blank">Rua exemplo 43, nº 2, Aveiro</a></p>
-        </div>
+        
+    </div>
+    <div class="footer mt-4">
+        <p>Contacto Geral:</p>
+        <p><i class="bi bi-telephone"></i> <a href="tel:+351927316451" class="text-white">+351 927 316 451</a></p>
+        <p><i class="bi bi-envelope"></i> <a href="mailto:geral@myhealthub.com" class="text-white">geral@myhealthub.com</a></p>
+        <p><i class="bi bi-geo-alt"></i> <a href="https://www.google.com/maps?q=Rua+exemplo+43,+n%C2%BA+2,+Aveiro" class="text-white" target="_blank">Rua exemplo 43, nº 2, Aveiro</a></p>
     </div>
 
     <div class="mo" id="consultamo">
@@ -181,7 +165,7 @@
 
     // Criando o objeto da consulta
     const novaConsulta = {
-        nome:'Michele Morrone',
+        nome:'Joao Silva',
         medico: 'Dr Kendrick lamar',
         tipo: 'Presencial',   
         data: data,
@@ -215,7 +199,7 @@
             });
     </script>
     
-    <script src="geral.js"></script>
-    <script src="sjs_cancelar.js"></script>
+    <script src="//geral.js"></script>
+    <script src="../sjs_cancelar.js"></script>
 </body>
 </html>

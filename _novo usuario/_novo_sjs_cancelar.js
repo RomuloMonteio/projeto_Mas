@@ -5,7 +5,7 @@ document.getElementById('logout-button').addEventListener('click', function() {
 });
 
 document.getElementById('confirm-logout').addEventListener('click', function() {
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 });
 
 document.getElementById('cancel-logout').addEventListener('click', function() {
