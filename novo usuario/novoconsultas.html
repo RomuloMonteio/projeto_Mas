@@ -89,6 +89,7 @@
     
         <h1>Minhas Consultas</h1>
         <div class="mt-4" id="listaConsultas">
+            <p id="co">Sem Consultas Agendadas</p>
         </div>
 
         <button class="btn btn-primary" id="novaConsulta">Nova Consulta</button>
@@ -146,6 +147,8 @@
             // Abrir mo de nova consulta
             $('#novaConsulta').on('click', function () {
                 $('#consultamo').fadeIn();
+                const co = document.getElementById('co')
+                co.style.display = 'none'
             });
 
             // Fechar mo
@@ -162,7 +165,6 @@
         alert('Por favor, selecione um horário válido.');
         return;
     }
-
     // Criando o objeto da consulta
     const novaConsulta = {
         nome:'Joao Silva',
@@ -178,7 +180,7 @@
     let consultas = JSON.parse(localStorage.getItem('consultas')) || [];
     consultas.push(novaConsulta);
     localStorage.setItem('consultas', JSON.stringify(consultas));
-
+    
     // Exibindo a consulta agendada no painel do cliente
     const consultaHTML = `
         <div class="consulta-card">
