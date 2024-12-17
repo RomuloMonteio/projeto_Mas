@@ -20,7 +20,7 @@ document.getElementById('cancel-logout').addEventListener('click', function() {
         document.getElementById('confirm-logout').addEventListener('click', function() {
             localStorage.removeItem('userEmail');
             localStorage.removeItem('doctorName');
-            window.location.href = '../index.html';
+            window.location.href = 'index.html';
         });
 
         document.getElementById('cancel-logout').addEventListener('click', function() {
