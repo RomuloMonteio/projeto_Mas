@@ -8,6 +8,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link para o CDN do Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <style>
         /*menu*/
         body {
@@ -114,6 +117,7 @@
         display: none;
     }
     /*fim */
+         
     </style>
 
 </head>
@@ -151,8 +155,18 @@
                 <h5>Informações do paciente</h5>
                 <div class="row mb-3">
                     <div class="col-md-2">
-                        <img src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3383.jpg?semt=ais_hybrid" class="img-thumbnail" alt="Foto do paciente">
+                        <!-- Imagem do usuário -->
+                        <img id="profile-image" src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3383.jpg?semt=ais_hybrid" class="img-thumbnail" alt="Foto do paciente">
+                        <!-- Input para upload -->
+                        <input type="file" id="image-upload" accept="image/*" class="form-control-file" style="display: none;">
+                        <!-- Botões -->
+                        <div >
+                            <button id="upload-btn" class="btn btn-primary btn-sm"><i class="fa-solid fa-upload"></i></button>
+                            <button id="remove-btn" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                        </div>
                     </div>
+                    
+                    
                     <div class="col-md-10">
                         <div class="row mb-2">
                             <label class="col-sm-2 col-form-label">Nome:</label>
@@ -184,7 +198,7 @@
                                 <input type="text" class="form-control" data-bind="value: hospital" readonly>
                             </div>
                         </div>
-
+                    </div>
                         <!--<button class="btn btn-primary btn-edit" data-bind="click: editar">Editar Dados</button>-->
                     </div>
                 </div>
@@ -232,6 +246,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Elementos do DOM
+       const profileImage = document.getElementById('profile-image');
+       const uploadInput = document.getElementById('image-upload');
+       const uploadButton = document.getElementById('upload-btn');
+       const removeButton = document.getElementById('remove-btn');
+
+       // URL padrão da imagem
+       const defaultImageURL = "https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3383.jpg?semt=ais_hybrid";
+
+       // Recupera a imagem salva no Local Storage ao carregar a página
+       document.addEventListener('DOMContentLoaded', () => {
+           const savedImage = localStorage.getItem('profileImage');
+           if (savedImage) {
+               profileImage.src = savedImage;
+           }
+       });
+
+       // Evento do botão para abrir o input de upload
+       uploadButton.addEventListener('click', () => {
+           uploadInput.click();
+       });
+
+       // Evento para processar a imagem carregada
+       uploadInput.addEventListener('change', (event) => {
+           const file = event.target.files[0];
+           if (file) {
+               const reader = new FileReader();
+               reader.onload = (e) => {
+                   const imageURL = e.target.result; // URL base64 da imagem
+                   profileImage.src = imageURL;
+                   localStorage.setItem('profileImage', imageURL); // Substitui no Local Storage
+               };
+               reader.readAsDataURL(file);
+           }
+       });
+
+       // Evento do botão para remover a imagem
+       removeButton.addEventListener('click', () => {
+           profileImage.src = defaultImageURL; // Define a imagem padrão
+           localStorage.setItem('profileImage', defaultImageURL); // Atualiza no Local Storage
+       });
+   </script>
+    <script>
+        
               // Knockout ViewModel
       var vm = function() {
         this.nome = ko.observable("Joao Silva");
