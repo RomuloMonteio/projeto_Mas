@@ -1,12 +1,5 @@
 
-document.getElementById('logout-button').addEventListener('click', function() {
-    const modal = document.getElementById('logout-modal');
-    modal.classList.add('visible');
-});
 
-document.getElementById('confirm-logout').addEventListener('click', function() {
-    window.location.href = '../index.html';
-});
 
 document.getElementById('cancel-logout').addEventListener('click', function() {
     const modal = document.getElementById('logout-modal');
@@ -27,7 +20,7 @@ document.getElementById('cancel-logout').addEventListener('click', function() {
         document.getElementById('confirm-logout').addEventListener('click', function() {
             localStorage.removeItem('userEmail');
             localStorage.removeItem('doctorName');
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         });
 
         document.getElementById('cancel-logout').addEventListener('click', function() {
